@@ -44,57 +44,73 @@ export const PuzzlePage = () => {
   };
 
   return (
-    <main>
-      <Link
-        className="flex items-center gap-2 self-start rounded p-4 text-xl"
-        to="/home"
-      >
-        <svg
-          width="40px"
-          height="40px"
-          viewBox="0 0 512 512"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <style>{`.cls-1 { fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 20px; }`}</style>
-          </defs>
-          <g data-name="Layer 2" id="Layer_2">
-            <g
-              data-name="E421, Back, buttons, multimedia, play, stop"
-              id="E421_Back_buttons_multimedia_play_stop"
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4 p-2">
+      <div className="flex flex-col items-center gap-4">
+        <section className="flex w-full justify-between">
+          <Link
+            className="flex items-center gap-2 self-start rounded p-2 text-xl"
+            to="/home"
+          >
+            <svg
+              width="40px"
+              height="40px"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <circle className="cls-1" cx="256" cy="256" r="246" />
-              <line
-                className="cls-1"
-                x1="352.26"
-                x2="170.43"
-                y1="256"
-                y2="256"
-              />
-              <polyline
-                className="cls-1"
-                points="223.91 202.52 170.44 256 223.91 309.48"
-              />
-            </g>
-          </g>
-        </svg>{' '}
-        BACK
-      </Link>
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4">
+              <defs>
+                <style>{`.cls-1 { fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 20px; }`}</style>
+              </defs>
+              <g data-name="Layer 2" id="Layer_2">
+                <g
+                  data-name="E421, Back, buttons, multimedia, play, stop"
+                  id="E421_Back_buttons_multimedia_play_stop"
+                >
+                  <circle className="cls-1" cx="256" cy="256" r="246" />
+                  <line
+                    className="cls-1"
+                    x1="352.26"
+                    x2="170.43"
+                    y1="256"
+                    y2="256"
+                  />
+                  <polyline
+                    className="cls-1"
+                    points="223.91 202.52 170.44 256 223.91 309.48"
+                  />
+                </g>
+              </g>
+            </svg>{' '}
+            BACK
+          </Link>
+          <button
+            className="rounded bg-cyan-700 p-4 text-amber-50"
+            onClick={validate}
+          >
+            Validate
+          </button>
+        </section>
+
+        {/* Bottom section */}
         <section>
           {puzzle &&
             puzzle.map((row, rowIndex) => (
               <div
                 key={rowIndex}
-                className={`flex h-[50px] ${rowIndex % 3 === 0 ? 'border-t-[3px]' : ''} ${rowIndex === 8 ? 'border-b-[3px]' : ''}`}
+                className={`flex h-[40px] sm:h-[50px] ${
+                  rowIndex % 3 === 0 ? 'border-t-[3px]' : ''
+                } ${rowIndex === 8 ? 'border-b-[3px]' : ''}`}
               >
                 {row.map((cell) => (
                   <div
                     key={cell.row + '_' + cell.col}
-                    className={`flex w-[50px] bg-cyan-700 p-0 ${cell.col % 3 === 0 ? 'border-l-[3px]' : 'border'} ${cell.col === 8 ? 'border-r-[3px]' : 'border'}`}
+                    className={`flex w-[40px] bg-cyan-700 p-0 sm:w-[50px] ${
+                      cell.col % 3 === 0 ? 'border-l-[3px]' : 'border'
+                    } ${cell.col === 8 ? 'border-r-[3px]' : 'border'}`}
                   >
                     <input
-                      className={`flex h-full w-full bg-[#fffce8] text-center text-xl text-[#040203] disabled:bg-[#fbf6d7] ${cell.isHighlighted ? 'text-red-500' : ''}`}
+                      className={`flex h-full w-full bg-[#fffce8] text-center text-xl text-[#040203] disabled:bg-[#fbf6d7] ${
+                        cell.isHighlighted ? 'text-red-500' : ''
+                      }`}
                       id={cell.row + '_' + cell.col}
                       onChange={(event) => onCellChange(event)}
                       style={{ boxSizing: 'border-box' }}
@@ -106,13 +122,6 @@ export const PuzzlePage = () => {
               </div>
             ))}
         </section>
-
-        <button
-          className="rounded bg-blue-950 p-2 text-amber-50"
-          onClick={validate}
-        >
-          Validate
-        </button>
       </div>
     </main>
   );

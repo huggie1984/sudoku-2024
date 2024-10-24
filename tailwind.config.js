@@ -20,6 +20,9 @@ module.exports = {
           '2xl': '1024px', // Override for 2xl breakpoint
         },
       },
+      backgroundColor: {
+        'disabled-important': '#fbf6d7 !important', // Custom class with important
+      },
     },
   },
   plugins: [],

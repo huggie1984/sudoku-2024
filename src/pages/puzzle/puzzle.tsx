@@ -108,12 +108,17 @@ export const PuzzlePage = () => {
                     } ${cell.col === 8 ? 'border-r-[3px]' : 'border'}`}
                   >
                     <input
-                      className={`box-border flex h-full w-full appearance-none rounded-none border-none bg-[#fffce8] text-center text-xl text-[#040203] shadow-none disabled:bg-[#fbf6d7] ${
+                      className={`box-border flex h-full w-full appearance-none rounded-none border-none bg-[#fffce8] text-center text-xl text-[#040203] shadow-none ${
                         cell.isHighlighted ? 'text-red-500' : ''
                       }`}
                       id={cell.row + '_' + cell.col}
                       onChange={(event) => onCellChange(event)}
-                      style={{ boxSizing: 'border-box' }}
+                      style={{
+                        boxSizing: 'border-box',
+                        backgroundColor: cell.isDisabled
+                          ? '#fbf6d7 !important'
+                          : '#fffce8',
+                      }}
                       disabled={cell.isDisabled}
                       value={cell.value > 0 ? cell.value : ''}
                     />

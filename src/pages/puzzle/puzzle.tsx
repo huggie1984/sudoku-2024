@@ -108,7 +108,7 @@ export const PuzzlePage = () => {
                     } ${cell.col === 8 ? 'border-r-[3px]' : 'border'}`}
                   >
                     <input
-                      className={`disabled:bg-disabled-important box-border flex h-full w-full appearance-none rounded-none border-none bg-[#fffce8] text-center text-xl text-[#040203] shadow-none focus:outline-none focus:ring-0 ${
+                      className={`box-border flex h-full w-full appearance-none rounded-none border-none !bg-[#fffce8] text-center text-xl text-[#040203] shadow-none focus:outline-none focus:ring-0 disabled:!bg-[#fbf6d7] ${
                         cell.isHighlighted ? 'text-red-500' : ''
                       }`}
                       id={cell.row + '_' + cell.col}

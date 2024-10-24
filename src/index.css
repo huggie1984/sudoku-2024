@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+input:-webkit-autofill {
+    background-color: #fffce8 !important;
+    color: #040203 !important;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #fffce8 !important;
+}
